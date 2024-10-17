@@ -38,8 +38,9 @@ function adicionarItem() {
         document.getElementById('quantidade').value = "";
         document.getElementById('preco').value = "";
 
-        // Carregar a lista
+        // Carregar a lista e atualizar receita
         mostrarLista();
+        receita(); // Atualiza a receita aqui
     }
 }
 
@@ -47,8 +48,10 @@ function remover(id) {
     let itens = JSON.parse(localStorage.getItem('itens')) || [];
     itens = itens.filter(item => item.id !== id);
     localStorage.setItem('itens', JSON.stringify(itens));
+    
     mostrarLista();
-};
+    receita(); // Atualiza a receita aqui
+}
 
 function alterar(id) {
     let itens = JSON.parse(localStorage.getItem('itens')) || [];
@@ -85,13 +88,16 @@ function salvarAlteracao() {
     localStorage.setItem('itens', JSON.stringify(itens));
 
     mostrarLista();
-
+    
+    // Limpa os campos de entrada
     document.getElementById('produto').value = "";
     document.getElementById('quantidade').value = "";
     document.getElementById('preco').value = "";
 
     btnSalvar.classList.remove('ocultar-btn');
     btnSalvarAlteracao.classList.add('ocultar-btn');
+    
+    receita(); // Atualiza a receita aqui
 }
 
 function mostrarLista() {
@@ -102,7 +108,7 @@ function mostrarLista() {
 
     itens.forEach(item => {
         const li = document.createElement('li');
-        li.textContent = `Produto: ${item.produto} - Quantidade: ${item.quantidade} - Preço: ${item.preco}`;
+        li.textContent = `Produto: ${item.produto} - Quantidade: ${item.quantidade} - Preço: R$${item.preco.toFixed(2)}`;
         
         const btnAlterar = document.createElement('button');
         const btnRemover = document.createElement('button');
@@ -121,23 +127,26 @@ function mostrarLista() {
 }
 
 function receita() {
-    console.log(localStorage.getItem('itens'));
     const itens = JSON.parse(localStorage.getItem('itens')) || [];
 
     const total = itens.reduce((acumulador, item) => {
         if(item.quantidade > 0){
             acumulador += (parseFloat(item.quantidade) * parseFloat(item.preco));
-        }else{
+        } else {
             acumulador += parseFloat(item.preco);
         }
         return acumulador;
-    },0);
+    }, 0);
 
     const receita = document.getElementById('receita');
+    receita.innerHTML = ''; // Limpa o conteúdo anterior
     const h2 = document.createElement('h2');
     receita.appendChild(h2);
-    h2.innerText = `Total: R$${total}`;
+    h2.innerText = `Total: R$${total.toFixed(2)}`; // Formata o total para duas casas decimais
 }
 
-receita();
-mostrarLista();
+// Chama a função receita e mostrarLista apenas no carregamento inicial
+document.addEventListener('DOMContentLoaded', () => {
+    receita();
+    mostrarLista();
+});
