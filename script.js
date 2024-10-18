@@ -76,7 +76,7 @@ function salvarAlteracao() {
     let itens = JSON.parse(localStorage.getItem('itens')) || [];
 
     const produto = document.getElementById('produto').value;
-    const quantidade = parseInt(document.getElementById('quantidade').value) || 0;
+    const quantidade = parseInt(document.getElementById('quantidade').value) || 1;
     const preco = parseFloat(document.getElementById('preco').value.replace(',', '.'));
 
     const itemAtualizado = {
@@ -88,7 +88,9 @@ function salvarAlteracao() {
 
     // Atualiza o item no array
     itens = itens.map(item => item.id === idLista ? itemAtualizado : item);
+
     localStorage.setItem('itens', JSON.stringify(itens));
+
 
     mostrarLista();
     
