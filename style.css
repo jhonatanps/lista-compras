@@ -22,3 +22,6 @@ span {
    font-weight: bold; 
 }
 
+.btn-success {
+    width: 100px;
+}
