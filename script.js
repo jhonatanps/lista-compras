@@ -116,14 +116,13 @@ function mostrarLista() {
         div.classList.add('col-12','d-flex', 'justify-content-center', 'align-items-center', 'gap-3');
         const li = document.createElement('li');
         const divSpan = document.createElement('div');
-        const spanId = document.createElement('span');
+       
         const spanProduto = document.createElement('span');
         const spanQtde = document.createElement('span');
         const spanPreco = document.createElement('span');
         divSpan.classList.add('col-6','d-flex', 'justify-content-start'  ,'align-content-center', 'gap-1');
         
-        spanId.textContent = `${item.id}`;
-        spanId.classList.add('col-1');
+      
         spanProduto.textContent = `${item.produto}`;
         spanProduto.classList.add('col-4', 'text-break');
         spanQtde.textContent = `QTDE: ${item.quantidade}`;
@@ -131,7 +130,7 @@ function mostrarLista() {
         spanPreco.textContent = `R$ ${item.preco.toFixed(2)}`;
         spanPreco.classList.add('col-5', 'text-break');
 
-        divSpan.appendChild(spanId);
+        
         divSpan.appendChild(spanProduto);
         divSpan.appendChild(spanQtde);
         divSpan.appendChild(spanPreco);
@@ -159,8 +158,6 @@ function mostrarLista() {
 
         const linha = document.createElement('hr');
 
-        // div.appendChild(btnAlterar);
-        // div.appendChild(btnRemover);
         li.appendChild(div);
         ul.appendChild(linha);
         ul.appendChild(li);
