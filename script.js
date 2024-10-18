@@ -113,22 +113,22 @@ function mostrarLista() {
 
     itens.forEach(item => {
         const div = document.createElement('div');
-        div.classList.add('col-12','d-flex', 'justify-content-center', 'align-items-center', 'gap-3');
+        div.classList.add('col-12','d-flex', 'justify-content-start', 'align-items-center', 'gap-3');
         const li = document.createElement('li');
         const divSpan = document.createElement('div');
        
         const spanProduto = document.createElement('span');
         const spanQtde = document.createElement('span');
         const spanPreco = document.createElement('span');
-        divSpan.classList.add('col-6','d-flex', 'justify-content-start'  ,'align-content-center', 'gap-1');
+        divSpan.classList.add('col-6','d-flex', 'justify-content-start'  ,'align-content-center', 'gap-0');
         
       
         spanProduto.textContent = `${item.produto}`;
         spanProduto.classList.add('col-4', 'text-break');
-        spanQtde.textContent = `QTDE: ${item.quantidade}`;
-        spanQtde.classList.add('col-3');
+        spanQtde.textContent = `QTDE:  ${item.quantidade}`;
+        spanQtde.classList.add('col-4');
         spanPreco.textContent = `R$ ${item.preco.toFixed(2)}`;
-        spanPreco.classList.add('col-5', 'text-break');
+        spanPreco.classList.add('col-4', 'text-break');
 
         
         divSpan.appendChild(spanProduto);
@@ -139,7 +139,7 @@ function mostrarLista() {
         
         
         const btnAlterar = document.createElement('button');
-        btnAlterar.classList.add('btn', 'btn-warning', 'btn-sm');
+        btnAlterar.classList.add('btn-alterar', 'btn', 'btn-warning', 'btn-sm');
         const btnRemover = document.createElement('button');
         btnRemover.classList.add('btn', 'btn-danger', 'btn-sm');
         btnAlterar.innerText = 'Alterar';
