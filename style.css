@@ -1,7 +1,24 @@
+*{
+    /* border: solid 1px red; */
+    margin: 0;
+}
+
 .ocultar-btn{
     display: none;
 }
 .mostrar-btn{
     display: inline-block;
+}
+
+.lista{
+    list-style: none;
+}
+
+.btn-primary{
+    width: 130px;
+}
+
+span {
+   font-weight: bold; 
 }
 
