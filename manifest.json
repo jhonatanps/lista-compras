@@ -1,0 +1,13 @@
+{
+  "name": "Lista de compras",
+  "theme_color": "#f0f0f0",
+  "background_color": "#f0f0f0",
+  "short_name": "Lista de compras",
+  "id": "Lista_de_compras",
+  "description": "Lista digital de compras.",
+  "categories": [
+    "business",
+    "shopping",
+    "utilities"
+  ]
+}
