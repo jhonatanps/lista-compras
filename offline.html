@@ -7,6 +7,12 @@
 
     <link rel="manifest" href="manifest.json">
     <script src="pwabuilder-sw.js"></script>
+
+    <script>
+        if(typeof navigator.serviceWorker !== 'undefined'){
+            navigator.serviceWorker.register('pwabuilder-sw.js')
+        }
+    </script>
 </head>
 <body>
     <h1>OFF</h1>
